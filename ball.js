@@ -39,7 +39,6 @@ class Ball {
   }
 
   display() {
-    // Display circle at x position
     stroke(0);
     fill(175);
     ellipse(this.position.x, this.position.y, 10, 10);
