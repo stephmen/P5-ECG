@@ -57,7 +57,7 @@ class Ball {
     for (let i=0 ; i < 600 ; i += 60){
       line(i,0,i,height)
     }
-    for (let j=0 ; j < height ; j += 30){
+    for (let j=0 ; j < height ; j += 60){
     line(0,j,width,j)
     }
     stroke(0)

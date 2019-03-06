@@ -1,8 +1,8 @@
 
 function setup() {
-  w = new waves;
   b = new Ball();
-  w.wavePsetup()
+  w = new waves;
+  w.wavePsetup(b)
   createCanvas(600, 360);
   clock()
 
@@ -10,10 +10,11 @@ function setup() {
 
 function draw() {
   background(220);
-  w.wavePdraw()
+  w.wavePdraw(b)
   w.wavePvector()
-  b.grid()
+  
   w.wavePupdate(b)
+  b.grid()
   b.update();
   b.display();
   b.line();
