@@ -1,5 +1,4 @@
 
-
 class Ball {
   constructor() {
     this.position = new createVector(0, 200);
@@ -16,7 +15,7 @@ class Ball {
     this.acceleration = force;
   }
 
-  update() {
+  update(w) {
     this.velocity.add(this.acceleration)
     this.position.add(this.velocity);
 
@@ -30,6 +29,7 @@ class Ball {
        this.force = 0
        this.count = 0
        this.previousWindowmillis = millis()
+       w.loop = false
     }
     this.windowTime = floor(millis() - this.previousWindowmillis);
     this.records[this.count] = ([int(this.position.x),int(this.position.y)])
@@ -44,7 +44,7 @@ class Ball {
     ellipse(this.position.x, this.position.y, 10, 10);
   }
   line(){
-      stroke(0)
+      stroke(4)
       noFill()
       beginShape()
       for (let i=0 ; i < this.records.length; i++){
@@ -57,7 +57,8 @@ class Ball {
     for (let i=0 ; i < 600 ; i += 60){
       line(i,0,i,height)
     }
-    for (let j=0 ; j < height ; j += 60){
+    stroke(200,75,75)
+    for (let j=0 ; j < height ; j += 10){
     line(0,j,width,j)
     }
     stroke(0)
