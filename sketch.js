@@ -1,9 +1,11 @@
 
 function setup() {
-  b = new Ball();
-  w = new waves;
-
-  w.wavePsetup(b)
+  pP = new Pointer();
+  q = new Pointer();
+  p = new waves;
+  qrs = new waves;
+  p.waveSetup(pP)
+  qrs.waveSetup(q)
   createCanvas(600, 360);
   clock()
 
@@ -11,11 +13,18 @@ function setup() {
 
 function draw() {
   background(220);
-  w.wavePdraw(b)
-  w.wavePvector()
-  w.wavePupdate(b)
-  b.grid()
-  b.update(w);
-  b.display();
-  b.line();
+  p.waveDrawHTML(pP);
+  qrs.waveDrawHTML(q);
+  p.waveVector();
+  qrs.waveVector();
+  p.waveUpdate(pP);
+  qrs.waveUpdate(q)
+  pP.update(p);
+  q.update(qrs);
+  pP.display();
+  q.display();
+  pP.line();
+  q.line()
+  pP.grid();
+  //p.loop = true;
 }

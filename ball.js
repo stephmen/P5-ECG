@@ -1,5 +1,5 @@
 
-class Ball {
+class Pointer {
   constructor() {
     this.position = new createVector(0, 200);
     this.velocity = new createVector(1, 0);
