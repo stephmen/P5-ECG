@@ -1,11 +1,14 @@
 
 function setup() {
   pP = new Pointer();
-  q = new Pointer();
-  p = new waves;
-  qrs = new waves;
+  tP = new Pointer();
+  qrsP = new Pointer();
+  p = new waves(1.5,191,0.09);
+  t = new waves(5,191,0.09);
+  qrs = new QRS;
   p.waveSetup(pP)
-  qrs.waveSetup(q)
+  t.waveSetup(tP)
+  qrs.waveSetup(qrsP)
   createCanvas(600, 360);
   clock()
 
@@ -14,17 +17,22 @@ function setup() {
 function draw() {
   background(220);
   p.waveDrawHTML(pP);
-  qrs.waveDrawHTML(q);
+  t.waveDrawHTML(tP);
+  qrs.waveDrawHTML(qrsP);
   p.waveVector();
+  t.waveVector();
   qrs.waveVector();
   p.waveUpdate(pP);
-  qrs.waveUpdate(q)
+  t.waveUpdate(tP)
+  qrs.waveQRSUpdate(qrsP)
   pP.update(p);
-  q.update(qrs);
+  tP.update(t);
+  qrsP.update(qrs);
   pP.display();
-  q.display();
+  tP.display();
+  qrsP.display();
   pP.line();
-  q.line()
+  tP.line()
+  qrsP.line()
   pP.grid();
-  //p.loop = true;
 }
