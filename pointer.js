@@ -31,7 +31,9 @@ class Pointer {
        this.previousWindowmillis = millis()
        w.loop = false
        w.qLoop = false
+       w.qLoopUp = false
        w.rLoop = false
+       w.sLoop = false
     }
     this.windowTime = floor(millis() - this.previousWindowmillis);
     this.records[this.count] = ([int(this.position.x),int(this.position.y)])

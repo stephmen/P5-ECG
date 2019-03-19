@@ -4,7 +4,7 @@ class waves {
     this.top = top;
     this.force = force;
     this.Highest = 0;
-    this.loop = false;
+    this.qLoop = false;
   }
 
   waveSetup () {
@@ -32,20 +32,23 @@ waveDrawHTML(b){
   this.endforce = new createVector(0,0)
  }
  waveUpdate(w){
-    if((pP.windowTime / 1000) > this.start.value() && !this.loop){
+    if((pP.windowTime / 1000) > this.start.value() && !this.qLoop){
     w.applyForce(this.waveUp)
+    if (w.velocity.y <= 0){
+      console.log(pP.windowTime)
+    }
     }
     if(w.position.y  < this.top.value()) {
     w.applyForce(this.waveDown)
     }
-    if(Math.sign(w.velocity.y) == 1 && w.position.y >= this.top.value() && !this.loop ){
+    if(Math.sign(w.velocity.y) == 1 && w.position.y >= this.top.value() && !this.qLoop ){
       w.applyForce(this.waveUp)
     }
     if(Math.sign(w.velocity.y) == 1 && w.position.y >= 199 ){
       w.applyForce(0,0)
       w.position.y = 200
       w.velocity.y = 0
-      this.loop = true
+      this.qLoop = true
     }
   }
 }
