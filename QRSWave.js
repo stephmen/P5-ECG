@@ -25,7 +25,7 @@ class QRS extends waves {
     this.topWave.html(`${this.top.value()}`)
     this.lowWave.html(`${this.low.value()}`)
     this.forceWave.html(`${this.force.value()}`)
-    this.Yvalue.html("       " + `${nf(b.velocity.y,2,2)}`)
+    this.Yvalue.html("       " + `${nf(b.vel.y,2,2)}`)
   }
   waveVector() {
     this.waveUp = new createVector(0, this.force.value() * -1)
@@ -39,66 +39,66 @@ class QRS extends waves {
     // QRS Q going down
     this.w = w
     if ((pP.windowTime / 1000) > p.start.value() + this.start.value() && !this.qLoop) {
-      this.w.velocity.y = 4
+      this.w.vel.y = 4
       this.qLoop = true;
     }
     //QRS Q going up
-    if (w.position.y > this.low.value() && !this.qLoopUp) {
+    if (w.pos.y > this.low.value() && !this.qLoopUp) {
       w.applyForce(this.waveUp);
       this.qLoopUp = true
-      if (Math.sign(w.velocity.y) == -1) {
-        this.qUpX = this.w.position.x;
+      if (Math.sign(w.vel.y) == -1) {
+        this.qUpX = this.w.pos.x;
         console.log("QRS Q:" + this.qUpX);
       }
     }
     //QRS R going down
-    if (w.position.x > this.qUpX && w.position.y < this.top.value() && this.qLoopUp && !this.rLoop) {
-      this.w.velocity.y = 0
+    if (w.pos.x > this.qUpX && w.pos.y < this.top.value() && this.qLoopUp && !this.rLoop) {
+      this.w.vel.y = 0
       this.w.applyForce(this.waveDown);
       this.rLoop = true
-      if (w.position.y >= 200) {
-        this.rDownX = this.w.position.x
+      if (w.pos.y >= 200) {
+        this.rDownX = this.w.pos.x
         console.log(this.rDownX)
         stroke(0);
         fill(175);
-        ellipse(this.w.position.x, this.w.position.y, 10, 10)
+        ellipse(this.w.pos.x, this.w.pos.y, 10, 10)
       }
     }
     //S
-    if (w.position.x > this.rDownX && w.position.y > this.low.value() && this.rLoop && !this.sLoop) {
-      this.w.velocity.y = 0
+    if (w.pos.x > this.rDownX && w.pos.y > this.low.value() && this.rLoop && !this.sLoop) {
+      this.w.vel.y = 0
       this.w.applyForce(this.waveUp);
       this.sLoop = true
-      if (w.position.y >= 0) {
-        this.sUpX = this.w.position.x
+      if (w.pos.y >= 0) {
+        this.sUpX = this.w.pos.x
         //console.log(this.sUpX)
       }
     }
     // S ending
-    if(w.position.y <= 202.7    && this.rLoop && this.sLoop  ){
+    if(w.pos.y <= 202.7    && this.rLoop && this.sLoop  ){
         this.w.applyForce(this.slowDown);
-        this.w.velocity.y = 0;
-        this.w.position.y = 200;
+        this.w.vel.y = 0;
+        this.w.pos.y = 200;
         this.rLoop = true
         //this.waveUp.mult(0)
     }
     //   }
     // }
-    // if(this.w.position.y  <= 182 && this.rLoop  ) {
-    //   this.w.velocity.y = 0
+    // if(this.w.pos.y  <= 182 && this.rLoop  ) {
+    //   this.w.vel.y = 0
     //   w.applyForce(this.waveUp);
     //   this.qLoop = true
     //   }
 
-    // if(this.w.position.y  >= 190 && this.rLoop  ) {
-    //   this.w.velocity.y = 0
+    // if(this.w.pos.y  >= 190 && this.rLoop  ) {
+    //   this.w.vel.y = 0
     //   w.applyForce(this.waveUp);
     //   this.qLoop = true
     //   }
 
-    // if(Math.sign(w.velocity.y) == -1 && w.position.y >= 199   ){
+    // if(Math.sign(w.vel.y) == -1 && w.pos.y >= 199   ){
     //   w.applyForce(this.sForce*-1)
-    //   //w.position.y = 190
+    //   //w.pos.y = 190
     //   //
 
     // }

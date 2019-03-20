@@ -15,7 +15,7 @@ waveDrawHTML(b){
   this.startWave.html(`${this.start.value()}`)
   this.topWave.html(`${this.top.value()}`)
   this.forceWave.html(`${this.force.value()}`)
-  this.Yvalue.html("       " + `${nf(b.velocity.y,2,2)}`)
+  this.Yvalue.html("       " + `${nf(b.vel.y,2,2)}`)
 
  }
 }

@@ -23,7 +23,7 @@ waveDrawHTML(b){
   this.startWave.html(`${this.start.value()}`)
   this.topWave.html(`${this.top.value()}`)
   this.forceWave.html(`${this.force.value()}`)
-  this.Yvalue.html("       " + `${nf(b.velocity.y,2,2)}`)
+  this.Yvalue.html("       " + `${nf(b.vel.y,2,2)}`)
 
  }
  waveVector(){
@@ -33,22 +33,22 @@ waveDrawHTML(b){
  }
  waveUpdate(w){
     if((pP.windowTime / 1000) > this.start.value() && !this.qLoop){
-    w.applyForce(this.waveUp)
-    if (w.velocity.y <= 0){
-      console.log(pP.windowTime)
-    }
-    }
-    if(w.position.y  < this.top.value()) {
+    w.applyForce(this.waveUp.add(0,-4).mult(0.1));
     w.applyForce(this.waveDown)
-    }
-    if(Math.sign(w.velocity.y) == 1 && w.position.y >= this.top.value() && !this.qLoop ){
-      w.applyForce(this.waveUp)
-    }
-    if(Math.sign(w.velocity.y) == 1 && w.position.y >= 199 ){
-      w.applyForce(0,0)
-      w.position.y = 200
-      w.velocity.y = 0
-      this.qLoop = true
-    }
+    this.qLoop = true;
   }
+    //if(w.pos.y  <= this.top.value()) {
+    //w.pos.y = 150 }
+    // if(Math.sign(w.vel.y) == 1 && w.pos.y >= this.top.value() && !this.qLoop ){
+    //   w.applyForce(this.waveUp)
+    // }
+    // if(Math.sign(w.vel.y) == 1 && w.pos.y >= 199 ){
+    //   w.applyForce(0,0)
+    //   w.pos.y = 200
+    //   w.vel.y = 0
+    //   this.qLoop = true
+    // }
+  }
+
 }
+

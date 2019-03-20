@@ -1,9 +1,9 @@
 
 class Pointer {
   constructor() {
-    this.position = new createVector(0, 200);
-    this.velocity = new createVector(1, 0);
-    this.acceleration   = new createVector()
+    this.pos = new createVector(0, 200);
+    this.vel = new createVector(1, 0);
+    this.acc   = new createVector(0,0)
     this.force = new createVector()
     this.records = []
     this.count = 0
@@ -12,21 +12,21 @@ class Pointer {
   }
 
   applyForce(force){
-    this.acceleration = force;
+    this.acc.add(force);
   }
 
   update(w) {
-    this.velocity.add(this.acceleration)
-    this.position.add(this.velocity);
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
+    this.acc.set(0,0);
 
 
-
-    if (this.position.x >= width) {
-       this.position.x = 0
-       this.position.y =200
-       this.velocity.y = 0
-       this.acceleration = 0
-       this.force = 0
+    if (this.pos.x >= width) {
+       this.pos.x = 0
+       this.pos.y =200
+       this.vel.y = 0
+       this.acc.set(0,0)
+       this.force.set(0,0)
        this.count = 0
        this.previousWindowmillis = millis()
        w.loop = false
@@ -36,16 +36,17 @@ class Pointer {
        w.sLoop = false
     }
     this.windowTime = floor(millis() - this.previousWindowmillis);
-    this.records[this.count] = ([int(this.position.x),int(this.position.y)])
+    this.records[this.count] = ([int(this.pos.x),int(this.pos.y)])
     this.count ++
     this.frameSec = select('#frameSec');
     this.frameSec.html(this.windowTime /1000)
+
   }
 
   display() {
     stroke(0);
     fill(175);
-    ellipse(this.position.x, this.position.y, 10, 10);
+    ellipse(this.pos.x, this.pos.y, 10, 10);
   }
   line(){
       stroke(4)

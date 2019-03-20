@@ -22,22 +22,22 @@ function draw() {
   ellipse(200, 0, 20,20)
   background(220);
   p.waveDrawHTML(pP);
-  t.waveDrawHTML(tP);
-  qrs.waveDrawHTML(qrsP);
+  //t.waveDrawHTML(tP);
+  //qrs.waveDrawHTML(qrsP);
   p.waveVector();
-  t.waveVector();
-  qrs.waveVector();
+  //t.waveVector();
+  //qrs.waveVector();
   p.waveUpdate(pP);
-  t.waveUpdate(tP)
-  qrs.waveQRSUpdate(qrsP)
+  //t.waveUpdate(tP)
+  //qrs.waveQRSUpdate(qrsP)
   pP.update(p);
-  tP.update(t);
-  qrsP.update(qrs);
+  // tP.update(t);
+  // qrsP.update(qrs);
   pP.display();
-  tP.display();
-  qrsP.display();
+  //tP.display();
+  //qrsP.display();
   pP.line();
-  tP.line()
-  qrsP.line()
+  //tP.line()
+  //qrsP.line()
   pP.grid();
 }
